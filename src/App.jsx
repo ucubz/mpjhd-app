@@ -1,13 +1,15 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
 import { MPJHDProvider } from './context/MPJHDContext';
 
-const App = () => (
-  <MPJHDProvider>
-    <Router>
-      <Routes />
-    </Router>
-  </MPJHDProvider>
-);
+const App = () => {
+  return (
+    <MPJHDProvider>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </MPJHDProvider>
+  )
+};
 
 export default App;
