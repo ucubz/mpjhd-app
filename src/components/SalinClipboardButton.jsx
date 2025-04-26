@@ -1,10 +1,16 @@
 export default function SalinClipboardButton({ formatFunction, className = "" }) {
   const handleCopy = async () => {
+    const html = formatFunction('html')
+
     try {
-      await navigator.clipboard.writeText(formatFunction())
-      alert('Tabel berhasil disalin ke clipboard!')
+      const blob = new Blob([html], { type: 'text/html' })
+      const clipboardItem = new ClipboardItem({ 'text/html': blob })
+
+      await navigator.clipboard.write([clipboardItem])
+      alert('✅ Tabel berhasil disalin dalam format tabel (HTML) ke clipboard!')
     } catch (err) {
-      alert('Gagal menyalin!')
+      console.error(err)
+      alert('❌ Gagal menyalin. Coba gunakan browser terbaru (Chrome/Edge).')
     }
   }
 

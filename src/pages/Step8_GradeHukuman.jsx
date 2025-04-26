@@ -64,9 +64,15 @@ const Step8_GradeHukuman = () => {
 
       <Card>
         <div className="flex flex-col gap-4 text-center">
-          <p><strong>Nilai Akhir:</strong> {state.nilaiAkhir}</p>
-          <p><strong>Grade Hukuman:</strong> {grade}</p>
-          <p><strong>Jenis Hukuman Disiplin:</strong> {jenisHukuman}</p>
+          <p className="text-gray-700 dark:text-gray-300">
+            <strong>Nilai Akhir:</strong> {state.nilaiAkhir}
+          </p>
+          <p className="text-gray-700 dark:text-gray-300">
+            <strong>Grade Hukuman:</strong> {grade}
+          </p>
+          <p className="text-gray-700 dark:text-gray-300">
+            <strong>Jenis Hukuman Disiplin:</strong> {jenisHukuman}
+          </p>
 
           <div className="flex justify-between gap-4 mt-6">
             <BackButton className="flex-1" />
@@ -74,7 +80,6 @@ const Step8_GradeHukuman = () => {
               Lanjut
             </Button>
           </div>
-
         </div>
       </Card>
       <Stepper />

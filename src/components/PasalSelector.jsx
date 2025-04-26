@@ -53,21 +53,30 @@ const PasalSelector = ({ kategori, selected, onChange }) => {
 
   return (
     <div className="my-4">
-      <label className="block mb-1 font-medium">Pilih Pasal yang Dilanggar</label>
-      <select value={selected} onChange={(e) => onChange(e.target.value)} className="border px-3 py-2 w-full">
+      <label className="block mb-1 font-medium text-gray-700 dark:text-gray-200">
+        Pilih Pasal yang Dilanggar
+      </label>
+
+      <select
+        value={selected}
+        onChange={(e) => onChange(e.target.value)}
+        className="border px-2 py-2 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 w-full"
+      >
         <option value="">-- Pilih Pasal --</option>
         {list.map((item, i) => (
-          <option key={i} value={item.kode}>{item.kode}</option>
+          <option key={i} value={item.kode}>
+            {item.kode}
+          </option>
         ))}
       </select>
 
       {selected && (
-        <div className="mt-2 p-2 bg-gray-100 rounded border text-sm text-gray-700">
+        <div className="mt-2 p-3 rounded border bg-gray-100 dark:bg-gray-700 text-sm text-gray-700 dark:text-gray-200">
           <strong>Deskripsi:</strong> {deskripsiPasal}
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default PasalSelector;
+export default PasalSelector

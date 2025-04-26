@@ -50,13 +50,19 @@ const Step7_HasilPerhitungan = () => {
 
       <Card>
         <div className="flex flex-col gap-4 text-center">
-          <p><strong>Nilai Pokok:</strong> {nilaiPokok}</p>
-          <p><strong>Nilai Tambahan (Pembobotan):</strong> {tambahan}</p>
-          <p><strong>Nilai Pengurang (Meringankan):</strong> {pengurang}</p>
+          <p className="text-gray-700 dark:text-gray-300">
+            <strong>Nilai Pokok:</strong> {nilaiPokok}
+          </p>
+          <p className="text-gray-700 dark:text-gray-300">
+            <strong>Nilai Tambahan (Pembobotan):</strong> {tambahan}
+          </p>
+          <p className="text-gray-700 dark:text-gray-300">
+            <strong>Nilai Pengurang (Meringankan):</strong> {pengurang}
+          </p>
 
-          <hr className="my-4 border-gray-300" />
+          <hr className="my-4 border-gray-300 dark:border-gray-600" />
 
-          <p className="text-xl font-semibold">
+          <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">
             <strong>Nilai Akhir:</strong> {nilaiAkhir}
           </p>
 

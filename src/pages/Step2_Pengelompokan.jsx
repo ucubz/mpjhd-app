@@ -31,7 +31,7 @@ const Step2_Pengelompokan = () => {
 
       <Card>
         <div className="flex flex-col gap-4">
-          <p className="text-gray-700 text-center">
+          <p className="text-gray-600 dark:text-gray-200 text-center">
             Berdasarkan pasal utama, pilih kelompok pelanggaran:
           </p>
 

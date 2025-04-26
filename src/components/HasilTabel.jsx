@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const formatPembobotan = (obj) => {
@@ -29,26 +28,33 @@ const formatMeringankan = (obj) => {
 
 const HasilTabel = ({ data }) => {
   return (
-    <div className="bg-white rounded-lg shadow p-6 border border-gray-200">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">Ringkasan Hasil Perhitungan</h2>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 border border-gray-200 dark:border-gray-700">
+      <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Ringkasan Hasil Perhitungan</h2>
       <table className="w-full text-sm border border-collapse">
-        <thead className="bg-blue-100 text-left">
+        <thead className="bg-blue-100 dark:bg-gray-700 text-left">
           <tr>
-            <th className="border px-4 py-2">Komponen</th>
-            <th className="border px-4 py-2">Nilai</th>
+            <th className="border px-4 py-2 text-gray-800 dark:text-gray-100">Komponen</th>
+            <th className="border px-4 py-2 text-gray-800 dark:text-gray-100">Nilai</th>
           </tr>
         </thead>
         <tbody>
-          <tr className="even:bg-gray-50"><td className="border px-4 py-2">Kategori</td><td className="border px-4 py-2">{data.kategori}</td></tr>
-          <tr className="even:bg-gray-50"><td className="border px-4 py-2">Pasal Utama</td><td className="border px-4 py-2">{data.pasalUtama}</td></tr>
-          <tr className="even:bg-gray-50"><td className="border px-4 py-2">Kelompok</td><td className="border px-4 py-2">{data.kelompok}</td></tr>
-          <tr className="even:bg-gray-50"><td className="border px-4 py-2">Nilai Pokok</td><td className="border px-4 py-2">{data.nilaiPokok}</td></tr>
-          <tr className="even:bg-gray-50"><td className="border px-4 py-2">Status</td><td className="border px-4 py-2">{data.status}{data.status === 'bersama' ? ` (${data.peran})` : ''}</td></tr>
-          <tr className="even:bg-gray-50"><td className="border px-4 py-2">Pembobotan</td><td className="border px-4 py-2">{formatPembobotan(data.pembobotan)}</td></tr>
-          <tr className="even:bg-gray-50"><td className="border px-4 py-2">Meringankan</td><td className="border px-4 py-2">{formatMeringankan(data.meringankan)}</td></tr>
-          <tr className="even:bg-gray-50"><td className="border px-4 py-2">Nilai Akhir</td><td className="border px-4 py-2">{data.nilaiAkhir}</td></tr>
-          <tr className="even:bg-gray-50"><td className="border px-4 py-2">Grade</td><td className="border px-4 py-2">{data.grade}</td></tr>
-          <tr className="even:bg-gray-50"><td className="border px-4 py-2">Jenis Hukuman</td><td className="border px-4 py-2">{data.jenisHukuman}</td></tr>
+          {[
+            { label: "Kategori", value: data.kategori },
+            { label: "Pasal Utama", value: data.pasalUtama || '-' },
+            { label: "Kelompok", value: data.kelompok },
+            { label: "Nilai Pokok", value: data.nilaiPokok },
+            { label: "Status", value: data.status + (data.status === 'bersama' ? ` (${data.peran})` : '') },
+            { label: "Pembobotan", value: formatPembobotan(data.pembobotan) },
+            { label: "Meringankan", value: formatMeringankan(data.meringankan) },
+            { label: "Nilai Akhir", value: data.nilaiAkhir },
+            { label: "Grade", value: data.grade },
+            { label: "Jenis Hukuman", value: data.jenisHukuman }
+          ].map((item, index) => (
+            <tr key={index} className="even:bg-gray-50 dark:even:bg-gray-700">
+              <td className="border px-4 py-2 text-gray-700 dark:text-gray-200">{item.label}</td>
+              <td className="border px-4 py-2 text-gray-700 dark:text-gray-200">{item.value}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

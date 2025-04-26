@@ -12,7 +12,7 @@ const Step9_HasilOutput = () => {
   const { state, dispatch } = useMPJHD()
   const navigate = useNavigate()
 
-  const formatTable = () => {
+  const formatTable = (type = 'text') => {
     const pembobotan = Object.entries(state.pembobotan)
       .filter(([_, v]) => v)
       .map(([k]) => k)
@@ -22,8 +22,32 @@ const Step9_HasilOutput = () => {
       .map(([k]) => k)
       .join(', ') || 'Tidak ada'
 
-    return `
-| Komponen                 | Nilai                                |
+    if (type === 'html') {
+      return `
+        <table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse; font-family: sans-serif;">
+          <thead>
+            <tr style="background-color:#e5e7eb;">
+              <th>Komponen</th>
+              <th>Nilai</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Kategori Pelanggaran</td><td>${state.kategori}</td></tr>
+            <tr><td>Pasal Utama</td><td>${state.pasalUtama || '-'}</td></tr>
+            <tr><td>Kelompok Pelanggaran</td><td>${state.kelompok}</td></tr>
+            <tr><td>Nilai Pokok</td><td>${state.nilaiPokok}</td></tr>
+            <tr><td>Status Pelanggaran</td><td>${state.status}${state.status === 'bersama' ? ` (${state.peran})` : ''}</td></tr>
+            <tr><td>Pembobotan Tambahan</td><td>${pembobotan}</td></tr>
+            <tr><td>Faktor Meringankan</td><td>${meringankan}</td></tr>
+            <tr><td>Nilai Akhir</td><td>${state.nilaiAkhir}</td></tr>
+            <tr><td>Grade Hukuman</td><td>${state.grade}</td></tr>
+            <tr><td>Jenis Hukuman Disiplin</td><td>${state.jenisHukuman}</td></tr>
+          </tbody>
+        </table>
+      `
+    }
+
+    return `| Komponen                 | Nilai                                |
 |---------------------------|-------------------------------------|
 | Kategori Pelanggaran     | ${state.kategori}
 | Pasal Utama              | ${state.pasalUtama || '-'}
@@ -34,8 +58,7 @@ const Step9_HasilOutput = () => {
 | Faktor Meringankan       | ${meringankan}
 | Nilai Akhir              | ${state.nilaiAkhir}
 | Grade Hukuman            | ${state.grade}
-| Jenis Hukuman Disiplin   | ${state.jenisHukuman}
-    `
+| Jenis Hukuman Disiplin   | ${state.jenisHukuman}`
   }
 
   const handleReset = () => {
@@ -54,19 +77,16 @@ const Step9_HasilOutput = () => {
 
       <Card>
         <div className="flex flex-col gap-6">
-          {/* Tabel */}
           <HasilTabel data={state} />
 
-          {/* Tombol salin & kembali */}
           <div className="flex justify-between gap-4">
             <BackButton className="flex-1" />
             <SalinClipboardButton formatFunction={formatTable} className="flex-1" />
           </div>
 
-          {/* Tombol ulang dari awal */}
           <Button
             onClick={handleReset}
-            className="w-full bg-red-600 hover:bg-red-700"
+            className="w-full bg-red-600 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-800"
           >
             Ulang dari Awal
           </Button>

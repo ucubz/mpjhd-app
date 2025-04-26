@@ -27,25 +27,23 @@ const Stepper = () => {
           return (
             <div
               key={stepNumber}
+              role="button"            // ✅ properti biasa
+              tabIndex={0}              // ✅ properti biasa
               onClick={() => handleStepClick(stepNumber)}
-              className={`
-                role="button"
-                tabIndex={0}
-                cursor-pointer
-                rounded-full
-                ${isActive ? 'bg-primary' : 'bg-gray-300'}
+              className={`cursor-pointer rounded-full 
+                ${isActive ? 'bg-primary' : 'bg-gray-300 dark:bg-gray-600'}
                 w-4 h-4 md:w-5 md:h-5
                 transition-transform duration-300 ease-in-out
                 hover:scale-125
                 focus:outline-none
-              `}              
+              `}
               aria-label={`Pindah ke Step ${stepNumber}`}
             />
           )
         })}
       </div>
 
-      <p className="text-xs text-gray-500">
+      <p className="text-xs text-gray-500 dark:text-gray-400">
         Step {currentStep} dari {totalSteps}
       </p>
     </div>

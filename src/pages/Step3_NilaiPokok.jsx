@@ -26,7 +26,7 @@ const Step3_NilaiPokok = () => {
 
       <Card>
         <div className="flex flex-col gap-4">
-          <p className="text-gray-700 text-center">
+          <p className="text-gray-600 dark:text-gray-200 text-center">
             Masukkan nilai pokok berdasarkan dampak pelanggaran atau kelompok yang telah dipilih.
           </p>
 

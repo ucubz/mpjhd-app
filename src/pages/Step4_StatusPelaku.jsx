@@ -29,8 +29,12 @@ const Step4_StatusPelaku = () => {
       <Card>
         <div className="flex flex-col gap-4">
 
+          <p className="text-gray-600 dark:text-gray-300 text-center">
+            Pilih status pelanggaran yang dilakukan oleh pegawai.
+          </p>
+
           <div className="flex flex-col gap-2">
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-2 text-gray-800 dark:text-gray-100">
               <input
                 type="radio"
                 name="status"
@@ -42,7 +46,7 @@ const Step4_StatusPelaku = () => {
               Pelanggaran dilakukan sendiri
             </label>
 
-            <label className="flex items-center gap-2">
+            <label className="flex items-center gap-2 text-gray-800 dark:text-gray-100">
               <input
                 type="radio"
                 name="status"
